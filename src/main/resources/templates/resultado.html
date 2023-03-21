@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Resultado</title>
+  <script>
+    window.onload = function() {
+      var mensagem = sessionStorage.getItem("mensagem");
+      document.getElementById("mensagem").textContent = mensagem;
+    }
+  </script>
+</head>
+<body>
+  <h1>Resultado</h1>
+  <p id="mensagem"></p>
+  <a href="/">Voltar ao formulário</a>
+</body>
+</html>

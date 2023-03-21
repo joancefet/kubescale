@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Kube-Scale</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+</head>
+<body>
+<h1>Kube-Scale</h1>
+<form method="post" action="/" th:object="${formulario}">
+    <div>
+        <label for="select1">Defina o Namespace do Ambiente</label>
+        <select id="select1" name="select1" th:field="*{select1}">
+            <option th:each="opcao : ${lista}" th:value="${opcao}" th:text="${opcao}"></option>
+        </select>
+    </div>
+    <div>
+        <label for="select2">Defina a quantidade de pods que deseja setar:</label>
+        <select id="select2" name="select2" th:field="*{select2}">
+            <option value="0">0</option>
+            <option value="1">1</option>
+        </select>
+    </div>
+    <button type="submit">Enviar</button>
+    
+    
+</form>
+
+<script>
+    // verifica se há uma mensagem no session storage e exibe um toast caso haja
+    if(sessionStorage.getItem('mensagem') != null) {
+        let mensagem = sessionStorage.getItem('mensagem');
+        toastr.options = {
+            "closeButton": true,
+            "positionClass": "toast-top-right",
+            "timeOut": "5000"
+        }
+        toastr.success(mensagem);
+        sessionStorage.removeItem('mensagem');
+    }
+</script>
+
+</body>
+</html>
+

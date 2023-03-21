@@ -1,0 +1,7 @@
+# arquivos temporários
+.DS_Store
+Thumbs.db
+
+# diretórios
+build/
+bin/
