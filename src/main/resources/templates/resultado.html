@@ -1,18 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Resultado</title>
-  <script>
-    window.onload = function() {
-      var mensagem = sessionStorage.getItem("mensagem");
-      document.getElementById("mensagem").textContent = mensagem;
-    }
-  </script>
+    <meta charset="UTF-8">
+    <title>Resultado</title>
 </head>
 <body>
-  <h1>Resultado</h1>
-  <p id="mensagem"></p>
-  <a href="/">Voltar ao formulário</a>
+    <h1>Resultado</h1>
+    <p th:text="${mensagem}"></p>
+    <a th:href="@{/}">Voltar ao formulário</a>
 </body>
 </html>
+

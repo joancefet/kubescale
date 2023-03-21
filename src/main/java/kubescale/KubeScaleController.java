@@ -43,7 +43,7 @@ public class KubeScaleController {
     }
 
     @PostMapping(value = "/")
-    public String enviarFormulario(Formulario formulario, RedirectAttributes attributes, HttpSession session) {
+    public ModelAndView enviarFormulario(Formulario formulario, RedirectAttributes attributes, HttpSession session) {
         if (!lista.contains(formulario.getSelect1())) {
             LOGGER.error("Opção inválida para o Select 1: {}", formulario.getSelect1());
             throw new IllegalArgumentException("Opção inválida para o Select 1");
@@ -69,7 +69,11 @@ public class KubeScaleController {
             session.setAttribute("mensagem", "Erro ao executar o comando: " + e.getMessage());
         }
         // Retornando
-        return new ModelAndView("redirect:/resultado");
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("mensagem", session.getAttribute("mensagem"));
+        modelAndView.setViewName("resultado");
+        return modelAndView;
+
 
     }
 }
